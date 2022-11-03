@@ -39,4 +39,6 @@ public final class Constants {
     public static int rightStickButton = 10;
     public static int startButton = 8;
     public static int backButton = 7;
+    //deadzoen value
+    public static double deadzone = 0.15;
 }

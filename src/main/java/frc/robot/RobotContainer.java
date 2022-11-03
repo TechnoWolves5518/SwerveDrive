@@ -5,10 +5,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.Autos.exampleAuto;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -18,12 +22,26 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  //define your controllers
+  private final Joystick driver = new Joystick(0);
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  //driver sticks
+  private final int translationAxis = XboxController.Axis.kLeftY.value;
+  private final int strafeAxis = XboxController.Axis.kLeftX.value;
+  private final int rotationAxis = XboxController.Axis.kRightX.value;
+
+  //drive buttons
+  private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
+
+  //subsystems
+  private final Swerve s_Swerve = new Swerve();
+ 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    boolean fieldRelative = true;
+    boolean openLoop = true;
+    s_Swerve.setDefaultCommand(new TeleopSwerve(s_Swerve, driver, translationAxis,strafeAxis, rotationAxis, fieldRelative, openLoop));
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -34,15 +52,18 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    zeroGyro.whenPressed(new InstantCommand(() -> s_Swerve.zeroGyro()));
+    }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
+   * @return 
    */
-  public Command getAutonomousCommand() {
+
+   //remove the void later
+  public exampleAuto getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return new exampleAuto(s_Swerve);
   }
 }
