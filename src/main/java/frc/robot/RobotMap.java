@@ -96,27 +96,27 @@ public class RobotMap {
     }
     //front left module
     public static final class Mod1{
-    public static final int frontLeftControlMotor = 4;
-    public static final int frontLeftDriveMotor = 5;
-    public static final int frontLeftEncoder = 6;
+    public static final int frontLeftControlMotor = 10;
+    public static final int frontLeftDriveMotor = 11;
+    public static final int frontLeftEncoder = 12;
     public static final double angleOffset = 0;
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(frontLeftDriveMotor, frontLeftControlMotor, frontLeftEncoder, angleOffset);
     }
     //back right module
     public static final class Mod2{
-    public static final int backRightControlMotor = 7;
-    public static final int backRightDriveMotor = 8;
-    public static final int backRightEncoder = 9;
+    public static final int backRightControlMotor = 4;
+    public static final int backRightDriveMotor = 5;
+    public static final int backRightEncoder = 6;
     public static final double angleOffset = 0;
     public static final SwerveModuleConstants constants = 
     new SwerveModuleConstants(backRightDriveMotor, backRightControlMotor, backRightEncoder, angleOffset);
     }
     //back left module
     public static final class Mod3{
-    public static final int backLeftControlMotor = 10;
-    public static final int backLeftDriveMotor = 11;
-    public static final int backLeftEncoder = 12;
+    public static final int backLeftControlMotor = 7;
+    public static final int backLeftDriveMotor = 8;
+    public static final int backLeftEncoder = 9;
     public static final double angleOffset = 0;
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(backLeftDriveMotor, backLeftControlMotor, backLeftEncoder, angleOffset);    }
