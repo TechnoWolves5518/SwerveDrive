@@ -16,7 +16,7 @@ import com.ctre.phoenix.sensors.CANCoder;
 public class SwerveModule {
     //define global variable names
     public int moduleNumber;
-    private double turnOffset;
+    private double angleOffset;
     private TalonFX mTurnMotor;
     private TalonFX mDrivemotor;
     private CANCoder turnEncoder;
@@ -27,12 +27,12 @@ public class SwerveModule {
     public SwerveModule(int moduleNumber, SwerveModuleConstants moduleConstants){
         //define module by module values
         this.moduleNumber = moduleNumber;
-        turnOffset = moduleConstants.turnOffset;
+        angleOffset = moduleConstants.angleOffset;
 
         //turn encoder config
         turnEncoder = new CANCoder(moduleConstants.cancoderID);
         configTurnEncoder();
-
+        
         //turn motor config
         mTurnMotor = new TalonFX(moduleConstants.turnMotorID);
         configTurnMotor();
@@ -61,7 +61,7 @@ public class SwerveModule {
     } 
     //Create the custom functions for the above function to work
     private void resetToAbsolute(){
-        double absolutePosotion = Conversions.degreesToFalcon(getCanCoder().getDegrees() - turnOffset, RobotMap.turnGearRatio);
+        double absolutePosotion = Conversions.degreesToFalcon(getCanCoder().getDegrees() - angleOffset, RobotMap.turnGearRatio);
         mTurnMotor.setSelectedSensorPosition(absolutePosotion);
     }
 

@@ -27,9 +27,9 @@ public class RobotMap {
     public static final double maxSpeed = 4.5; //value in meters per second
     public static final double maxSteeringSpeed = 11.5; //how fast the bot can spin around
     //wheel specs
-    public static final double trackWidth = Units.inchesToMeters(0); //distance between right and left wheels
-    public static final double wheelBase = Units.inchesToMeters(0); //distance between front and back wheels.
-    public static final double wheelDiameter = Units.inchesToMeters(0); //diameter of sweve wheel
+    public static final double trackWidth = Units.inchesToMeters(24.875); //distance between right and left wheels
+    public static final double wheelBase = Units.inchesToMeters(24.875); //distance between front and back wheels.
+    public static final double wheelDiameter = Units.inchesToMeters(3.7); //diameter of sweve wheel
     public static final double wheelCircumference = wheelDiameter * Math.PI; //circumference of a swerve wheel
     public static final double openLoopRamp = 0.25;
     public static final double closedLoopRamp = 0.0;
@@ -56,13 +56,13 @@ public class RobotMap {
     public static final boolean driveEnableCurrentLimit = true;
 
     //turn motor PID Values
-    public static final double turnKP = 0.0; //all values in PID are placeholders
+    public static final double turnKP = 0.1; //PID values copied from Github
     public static final double turnKI = 0.0;
     public static final double turnKD = 0.0;
     public static final double turnKF = 0.0;
 
     //drive motor PID values
-    public static final double driveKP = 0.0;
+    public static final double driveKP = 0.1;
     public static final double driveKI = 0.0;
     public static final double driveKD = 0.0;
     public static final double driveKF = 0.0;
@@ -72,8 +72,8 @@ public class RobotMap {
     public static final double driveKV = (1/1);
     public static final double driveKA = (1/1);
 
-    public static final NeutralMode turnNeutralMode = NeutralMode.Coast; //what to do when no input is detected
-    public static final NeutralMode driveNeutralMode = NeutralMode.Brake; 
+    public static final NeutralMode turnNeutralMode = NeutralMode.Brake; //what to do when no input is detected
+    public static final NeutralMode driveNeutralMode = NeutralMode.Coast; 
 
     //motor inversion
     public static final boolean driveMotorInvert = false; //for turning optimization
@@ -90,7 +90,7 @@ public class RobotMap {
     public static final int frontRightControlMotor = 1;
     public static final int frontRightDriveMotor = 2;
     public static final int frontRightEncoder = 3;
-    public static final double angleOffset = 0; //how far off the motor is from center
+    public static final double angleOffset = 226.67; //how far off the motor is from center
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(frontRightDriveMotor, frontRightControlMotor, frontRightEncoder, angleOffset);
     }
@@ -99,7 +99,7 @@ public class RobotMap {
     public static final int frontLeftControlMotor = 10;
     public static final int frontLeftDriveMotor = 11;
     public static final int frontLeftEncoder = 12;
-    public static final double angleOffset = 0;
+    public static final double angleOffset = 324.93;
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(frontLeftDriveMotor, frontLeftControlMotor, frontLeftEncoder, angleOffset);
     }
@@ -108,7 +108,7 @@ public class RobotMap {
     public static final int backRightControlMotor = 4;
     public static final int backRightDriveMotor = 5;
     public static final int backRightEncoder = 6;
-    public static final double angleOffset = 0;
+    public static final double angleOffset = 12.04;
     public static final SwerveModuleConstants constants = 
     new SwerveModuleConstants(backRightDriveMotor, backRightControlMotor, backRightEncoder, angleOffset);
     }
@@ -117,7 +117,7 @@ public class RobotMap {
     public static final int backLeftControlMotor = 7;
     public static final int backLeftDriveMotor = 8;
     public static final int backLeftEncoder = 9;
-    public static final double angleOffset = 0;
+    public static final double angleOffset = 240.64;
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(backLeftDriveMotor, backLeftControlMotor, backLeftEncoder, angleOffset);    }
 
