@@ -61,7 +61,9 @@ public class SwerveModule {
     } 
     //Create the custom functions for the above function to work
     private void resetToAbsolute(){
-        double absolutePosotion = Conversions.degreesToFalcon(getCanCoder().getDegrees() - angleOffset, RobotMap.turnGearRatio);
+        double absolutePosotion = Conversions.degreesToFalcon(turnEncoder.getAbsolutePosition() - angleOffset, RobotMap.turnGearRatio);
+        //System.out.println("absolute position: " + absolutePosotion);
+        //System.out.println("Cancoder Degrees: " + turnEncoder.getAbsolutePosition());
         mTurnMotor.setSelectedSensorPosition(absolutePosotion);
     }
 

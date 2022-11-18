@@ -28,6 +28,7 @@ public class Swerve extends SubsystemBase {
 
   public Swerve() {
     gyro = Robot.gyro;
+    gyro.calibrate();
     zeroGyro(); //reset the gyro when the bot starts to make sure field oriented works properly
 
     swerveOdemetry = new SwerveDriveOdometry(RobotMap.swerveKinematics, getYaw());
@@ -90,9 +91,8 @@ public class Swerve extends SubsystemBase {
     }
 
     public Rotation2d getYaw() {
-      double[] ypr = new double[3];
-      gyro.getAngle();
-      return (RobotMap.inverGyro) ? Rotation2d.fromDegrees(360 - ypr[0]) : Rotation2d.fromDegrees(ypr[0]);
+      double ypr = gyro.getAngle();
+      return (RobotMap.inverGyro) ? Rotation2d.fromDegrees(360 - ypr) : Rotation2d.fromDegrees(ypr);
     }
 
   @Override
