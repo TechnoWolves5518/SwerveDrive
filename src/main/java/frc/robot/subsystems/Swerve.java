@@ -91,7 +91,7 @@ public class Swerve extends SubsystemBase {
     }
 
     public Rotation2d getYaw() {
-      double ypr = gyro.getAngle();
+      double ypr = -gyro.getAngle();
       return (RobotMap.inverGyro) ? Rotation2d.fromDegrees(360 - ypr) : Rotation2d.fromDegrees(ypr);
     }
 

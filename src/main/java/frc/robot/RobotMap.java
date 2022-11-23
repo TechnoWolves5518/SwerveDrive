@@ -56,9 +56,9 @@ public class RobotMap {
     public static final boolean driveEnableCurrentLimit = true;
 
     //turn motor PID Values
-    public static final double turnKP = 0.1; //PID values copied from Github
+    public static final double turnKP = 0.6; //PID values copied from Github
     public static final double turnKI = 0.0;
-    public static final double turnKD = 0.0;
+    public static final double turnKD = 12.0;
     public static final double turnKF = 0.0;
 
     //drive motor PID values
@@ -80,7 +80,7 @@ public class RobotMap {
     public static final boolean turnMotorInvert = false;
 
     //incoder invert
-    public static final boolean canCoderInvert = false;
+    public static final boolean canCoderInvert = true;
     //Swerve Module variables and CAN IDs
     //CAN is the system that allows the code to identify motor controllers and in turn 
     // ensure that the correct motor controller is being used for the right task
@@ -90,7 +90,7 @@ public class RobotMap {
     public static final int frontRightControlMotor = 1;
     public static final int frontRightDriveMotor = 2;
     public static final int frontRightEncoder = 3;
-    public static final double angleOffset = 226.67; //how far off the motor is from center
+    public static final double angleOffset = 312.80; //how far off the motor is from center
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(frontRightDriveMotor, frontRightControlMotor, frontRightEncoder, angleOffset);
     }
@@ -99,7 +99,7 @@ public class RobotMap {
     public static final int frontLeftControlMotor = 10;
     public static final int frontLeftDriveMotor = 11;
     public static final int frontLeftEncoder = 12;
-    public static final double angleOffset = 324.93;
+    public static final double angleOffset = 34.80;
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(frontLeftDriveMotor, frontLeftControlMotor, frontLeftEncoder, angleOffset);
     }
@@ -108,7 +108,7 @@ public class RobotMap {
     public static final int backRightControlMotor = 4;
     public static final int backRightDriveMotor = 5;
     public static final int backRightEncoder = 6;
-    public static final double angleOffset = 12.04;
+    public static final double angleOffset = 348.05;
     public static final SwerveModuleConstants constants = 
     new SwerveModuleConstants(backRightDriveMotor, backRightControlMotor, backRightEncoder, angleOffset);
     }
@@ -117,7 +117,7 @@ public class RobotMap {
     public static final int backLeftControlMotor = 7;
     public static final int backLeftDriveMotor = 8;
     public static final int backLeftEncoder = 9;
-    public static final double angleOffset = 240.64;
+    public static final double angleOffset = 299.44;
     public static final SwerveModuleConstants constants =
     new SwerveModuleConstants(backLeftDriveMotor, backLeftControlMotor, backLeftEncoder, angleOffset);    }
 
