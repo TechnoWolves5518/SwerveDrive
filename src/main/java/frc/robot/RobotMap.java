@@ -24,7 +24,7 @@ public class RobotMap {
     //define invertion of the Gryo
     public static final boolean inverGyro = false;
     //speed modifiers
-    public static final double maxSpeed = 4.5; //value in meters per second
+    public static final double maxSpeed = 4.5; //value in meters per second default is 4.5
     public static final double maxSteeringSpeed = 11.5; //how fast the bot can spin around
     //wheel specs
     public static final double trackWidth = Units.inchesToMeters(24.875); //distance between right and left wheels
@@ -35,7 +35,7 @@ public class RobotMap {
     public static final double closedLoopRamp = 0.0;
     public static final double driveGearRatio = 6.75/1; //L2 mk4i gear ratio
     public static final double turnGearRatio = (150/7)/1; //standard gear ratio
-
+    
     //swerve Kinematics
     public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
         new Translation2d(wheelBase/2, trackWidth/2),
@@ -62,15 +62,15 @@ public class RobotMap {
     public static final double turnKF = 0.0;
 
     //drive motor PID values
-    public static final double driveKP = 0.1;
+    public static final double driveKP = 2.6302;
     public static final double driveKI = 0.0;
     public static final double driveKD = 0.0;
     public static final double driveKF = 0.0;
 
     //Drive motor Characterization
-    public static final double driveKS = (1/1);
-    public static final double driveKV = (1/1);
-    public static final double driveKA = (1/1);
+    public static final double driveKS = (0.64686/1);
+    public static final double driveKV = (2.4071/1);
+    public static final double driveKA = (0.066756/1);
 
     public static final NeutralMode turnNeutralMode = NeutralMode.Brake; //what to do when no input is detected
     public static final NeutralMode driveNeutralMode = NeutralMode.Coast; 

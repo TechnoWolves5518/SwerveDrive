@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Autos.exampleAuto;
+import frc.robot.Autos.TestAuto;
+import frc.robot.Autos.AutoPaths.Characterize;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
@@ -31,7 +32,7 @@ public class RobotContainer {
   private final int rotationAxis = XboxController.Axis.kRightX.value;
 
   //drive buttons
-  private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kY.value);
+  private final JoystickButton zeroGyro = new JoystickButton(driver, Constants.rightStickButton);
 
   //subsystems
   private final Swerve s_Swerve = new Swerve();
@@ -62,8 +63,8 @@ public class RobotContainer {
    */
 
    //remove the void later
-  public exampleAuto getAutonomousCommand() {
+  public Characterize getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new exampleAuto(s_Swerve);
+    return null;
   }
 }
