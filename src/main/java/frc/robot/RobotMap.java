@@ -19,7 +19,23 @@ public class RobotMap {
        Otherwise we would have to change every version of the varable and lose time that could be spent doing other tasks
     */
 
-    
+    public static final class AutonomousConstants {
+        public static final double kMaxSpeedMetersPerSecond = 2;
+        public static final double KMaxAccelerationMetersPerSecondSquared = 1;
+        public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
+        public static final double KMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
+
+        public static final double kPXController = 1.25;
+        public static final double kPYController = 1.25;
+        public static final double kPThetaController = 3;
+
+        public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
+        new TrapezoidProfile.Constraints(kMaxAngularSpeedRadiansPerSecond, KMaxAngularSpeedRadiansPerSecondSquared);
+    }
+
+    public static final class PathWeaverConstants {
+        public static final String testPath = "paths/testAuto.wpilib.json";
+    }
     //Drivetrain modifiers
     //define invertion of the Gryo
     public static final boolean inverGyro = false;
@@ -62,7 +78,7 @@ public class RobotMap {
     public static final double turnKF = 0.0;
 
     //drive motor PID values
-    public static final double driveKP = 2.6302;
+    public static final double driveKP = 0.1;
     public static final double driveKI = 0.0;
     public static final double driveKD = 0.0;
     public static final double driveKF = 0.0;
