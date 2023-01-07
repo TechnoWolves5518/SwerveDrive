@@ -4,10 +4,13 @@
 
 package frc.robot;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.Constants.OIConstants;
+import frc.robot.subsystems.DriveSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -18,16 +21,53 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final DriveSubsystem m_DriveSubsystem = new DriveSubsystem();
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  //define autonomous chooser
+  private final SendableChooser<Command> autoChooser = new SendableChooser<>();
+
+  //define controller
+  private final XboxController driverController = new XboxController(OIConstants.driverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    
     // Configure the button bindings
     configureButtonBindings();
   }
 
+  private static double deadzone(double value, double deadzone) {
+    if (Math.abs(value) > deadzone) {
+      if (value > 0.0) {
+        return (value - deadzone) / (1.0 - deadzone);
+      } else {
+        return (value + deadzone) / (1.0 - deadzone);
+      }
+    } else {
+      return 0;
+    }
+  }
+
+  private static double modifyAxisCubed(DoubleSupplier supplierValue) {
+    double value = supplierValue.getAsDouble();
+
+    //deadzone
+    value = deadzone(value, OIConstants.driveDeadzone);
+
+    //cube the axis
+    value = Math.copySign(value * value * value, value);
+
+    return value;
+  }
+  private static double modifyAxisQuartic(DoubleSupplier supplierValue) {
+    double value = supplierValue.getAsDouble();
+
+    value = deadzone(value, OIConstants.driveDeadzone);
+
+    value = Math.copySign(value * value * value * value, value);
+
+    return value;
+  }
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
@@ -43,6 +83,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    return autoChooser.getSelected();
   }
 }

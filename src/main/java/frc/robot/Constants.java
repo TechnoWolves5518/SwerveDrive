@@ -59,11 +59,80 @@ public final class Constants {
 
         //values to scale joystick inputs to desired states
         public static final double maxSpeedMPS = 4.5;
-        public static final double maxRotationSPeed = 3 * Math.PI;
+        public static final double maxRotationSpeed = 3 * Math.PI;
 
-        //Drive MotorPID values
+        //Drive sysID values
         public static final double driveKS = 0.064686; 
         public static final double driveKV = 2.4071;
         public static final double driveKA = 0.066756;
+        //turn experimental values
+        public static final double turnKS = 0.6;
+        public static final double turnKV = 0.6;
+        public static final double turnKA = 0;
+        public static final double maxTurnSpeedRad = Math.PI * 2; //1 rotation a second
+    }
+
+    public static final class ModuleConstants {
+        public static final double driveGearRatio = 6.75;
+        //turn PID values
+        public static final double turnKP = 0.6;
+        public static final double turnKI = 0;
+        public static final double turnKD = 12.0;
+
+        public static final double maxSteerSpeedRadians = 3 * Math.PI;
+        public static final double maxSteerAccelerationRadians = 6 * Math.PI;
+
+        public static final double kPModuleDriveController = 1; //tune it
+        public static final double kIModuleDriveController = 0;
+        public static final double kDModuleDriveController = 0;
+
+        //encoder values
+        public static final int kDriveFalconEncoderCPR = 2048; //CPR is counts per revolution
+        public static final int kTurningCANcoderCPR = 4096;
+        public static final double wheelDiameterMeters = 0.09398;
+        public static final double wheelCircumferenceMeters =
+        wheelDiameterMeters * Math.PI;
+        public static final double drivetoMetersPerSecond = 
+        (10 * wheelCircumferenceMeters) / (driveGearRatio * 2048);
+    }
+
+    // class for controller related constants
+    public static final class OIConstants {
+        public static final int driverControllerPort = 0;
+        public static final double driveDeadzone = 0.15;
+        public static final int driverControllerZeroEncoder = 8;
+        public static final int driveControllerZeroGyro = 9;
+    }
+
+    //autonomous related constants
+    public static final class AutoConstants {
+        public static final double maxAutoSpeedMPS = 1;
+        public static final double maxAutoAccelerationMPS = 1;
+        public static final double maxAutoTurnSpeed = Math.PI;
+        public static final double maxAutoTurnAcceleration = Math.PI;
+
+        public static final double kPXController = 1.25;
+        public static final double kPYController = 1.25;
+        public static final double kpThetaController = 3;
+        //underneath will be gyro offsets if needed
+
+        //end gap
+        public static final TrapezoidProfile.Constraints kThetaControllerConstraints = 
+            new TrapezoidProfile.Constraints(maxAutoTurnSpeed, maxAutoAccelerationMPS);
+    }
+
+    public static final class PathPlannerConstants {
+        public static final double autoMaxVelocityMPS = 4.5;
+        public static final double autoMaxAcceelerationMPS = 3.25;
+        public static final double kPXController = 1.25;
+        public static final double kPYController = 1.25;
+        public static final double kpThetaController = 3;
+        public static final double maxAutoTurnSpeed = Math.PI;
+        public static final double maxAutoAccelerationMPS = Math.PI;
+        
+        //motion profiled robot angle controler constraint definition
+        public static final TrapezoidProfile.Constraints kThetaControllerConstraints = 
+            new TrapezoidProfile.Constraints(maxAutoTurnSpeed, maxAutoAccelerationMPS);
+        //auto paths go below
     }
 }
